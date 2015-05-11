@@ -9,17 +9,17 @@ common: &common
   # Downcased and trimmed app name for namespaces.
   # Safest to start with a letter rather than a number.
   # See locales/en.yml for setting your app's user facing brand name.
-  app_name: 'starterkit'
+  app_name: 'tournament'
 
   social:
-    facebook: 'https://www.facebook.com/simple10'
-    twitter: 'https://twitter.com/joejohnston'
-    google_plus: 'https://plus.google.com/+JoeJohnstonSF'
-    linkedin: 'http://www.linkedin.com/in/startupjoe'
+    facebook: 'https://www.facebook.com/ExProEn'
+    twitter: 'https://twitter.com/metekabak'
+    linkedin: 'http://www.linkedin.com/in/metekabak'
+    google_plus: ':'
 
   contact:
-    email: 'joe@example.com'
-    phone: '555-555-5555'
+    email: 'kabakmete@gmail.com'
+    phone: ''
 
   session:
     key: '_starterkit_session'
@@ -31,7 +31,7 @@ common: &common
 
   mail:
     layout: 'emails/email'
-    from: 'from@example.com'
+    from: 'kabakmete@gmail.com'
 
 
 # Default ENV vars.
@@ -45,8 +45,8 @@ default_env: &default_env
   # See RobotsController.
   CANONICAL_HOST: 'rails4-starterkit.herokuapp.com'
 
-  AUTH_FACEBOOK_KEY: '201539556694091'
-  AUTH_FACEBOOK_SECRET: '80ae1dc93961b7f9a79265af0eeca698'
+  AUTH_FACEBOOK_KEY: '793944254056325'
+  AUTH_FACEBOOK_SECRET: '8972cc453b9eecc9394692678c7eac16'
   AUTH_TWITTER_KEY: 'hbcu8JvAB1FftWw7c3oog'
   AUTH_TWITTER_SECRET: 'uTspycZ4T7QAeA9QLGBb1zoLrR6K7ChBPdYt8F7nZc'
 
@@ -54,12 +54,12 @@ default_env: &default_env
   # Channging the keys will invalidate user passwords,
   # forcing users to use the forgot password feature.
   # TODO: make new keys with `rake secret`
-  DEVISE_SECRET_KEY: '7da7ce94b67dcb951aba685032aa7ddc17ae2551a7a11b60369eff65f1c3cc0a5525c93900b6315daf1558b973d7f5c0b6e80addd61225d6a23694a5fb8ff83e'
-  DEVISE_PEPPER: 'f23254b349cb3712c8c31dbdc4bb40555b0cd2ca9de98a15821ba5c2cb7d232b352e7f992bb8345dc53a2b4091f6b9dd1531bdaf1f1ae516d698e9f870d4e69c'
+  DEVISE_SECRET_KEY: '9dddb38f9adffe58da7e2ccd3278a04b00ff7e1f4d708a35005377419b06076ac752015683aaba2add0c5f2466b4d52b2c26fe08cb12905e358ca22e713482ed'
+  DEVISE_PEPPER: '55f286d7c0abc2deb8c05658a253fdff1363776162955f62587c1ad571a1f615ca36c2c73082f748145964c2b8222de373e397e657ef3041061de7010044d185'
 
   # Signed cookie encryption key.
   # TODO: make new key with `rake secret`
-  SECRET_KEY_BASE: '16e628ec083d6127ca30716ac69c578ba47a900702f0d498c149b87d06eeebd1bc0be22929e16e2180cb137e9be8bc7f77dd3b9c13fbb306330bb6450cfbc051'
+  SECRET_KEY_BASE: 'e96b643e2c2467ee4d0210c4eaa0a825943a4e261c3f323432e3e726126f78824b1b34208908505a7f924fe46c5752e3909ff1e7cadc1dd0dd02caf99344eca0'
 
   # Redis server used by Sidekiq, cache, etc.
   REDIS_URL: 'redis://localhost:6379/0'

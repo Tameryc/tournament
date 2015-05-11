@@ -1,5 +1,5 @@
 - flow        ||= 'login'
-- css_class   ||= 'btn btn-primary'
+- css_class   ||= 'btn btn-primary form-control'
 - providers   ||= Authentication.providers
 
 .auth__providers
@@ -7,4 +7,5 @@
     .auth__providers__provider
       = link_to provider_auth_path(provider, flow: flow), data: {flow: flow, provider: provider}, class: css_class do
         %i.sico-fixed{class: "sico-#{provider}"}
+        Login with 
         = Authentication.provider_name(provider)

@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   get devise_prefix => redirect('/a/signup')
 
   # User
-  resources :users, path: 'u', only: :show do
+  resources :users, path: 'a', only: :show do
     resources :authentications, path: 'accounts'
   end
   get '/home' => 'users#show', as: 'user_home'
