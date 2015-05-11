@@ -23,3 +23,6 @@
 # Ignore Sublime Text workspace files
 /*.sublime-workspace
 
+# OSX
+.DS_Store
+Thumbs.db
