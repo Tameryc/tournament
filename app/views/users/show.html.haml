@@ -1,4 +1,13 @@
 %h1 User Home
 
-%p
-  You are logged in.
+%p You are logged in.
+
+%table.table.table-bordered
+	%tr
+		%td Full Name
+		%td Email
+	
+	- @users.each do |user|
+		%tr
+			%td= "#{user.first_name} #{user.last_name}"
+			%td= user.email
