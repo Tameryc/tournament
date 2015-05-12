@@ -100,6 +100,11 @@ en:
     dashboard:
       name: 'Admin'         # Title of admin dashboard on the left
 
+  user:
+    myteam: 'My Team'
+
+
+
   errors:
     unknown: 'Oops! Something went wrong. Please try again.'
 
@@ -149,6 +154,8 @@ en:
       user:
         edit:
           password: 'Leave blank unless updating password'
+
+
 
     # Labels and hints examples
     # labels:

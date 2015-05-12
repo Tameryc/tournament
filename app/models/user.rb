@@ -60,4 +60,7 @@ class User < ActiveRecord::Base
     UserMailer.delay.welcome_email(self.id)
     # UserMailer.delay_for(5.days).find_more_friends_email(self.id)
   end
+
+  has_many :teams
+
 end

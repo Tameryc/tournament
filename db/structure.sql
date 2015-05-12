@@ -69,6 +69,37 @@ ALTER SEQUENCE authentications_id_seq OWNED BY authentications.id;
 
 
 --
+-- Name: games; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE games (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: games_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE games_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: games_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE games_id_seq OWNED BY games.id;
+
+
+--
 -- Name: oauth_caches; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -126,6 +157,104 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: servers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE servers (
+    id integer NOT NULL,
+    region integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: servers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE servers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: servers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE servers_id_seq OWNED BY servers.id;
+
+
+--
+-- Name: teams; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE teams (
+    id integer NOT NULL,
+    captain_id integer,
+    game_id integer,
+    name character varying(255),
+    short_name character varying(255),
+    flag character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: teams_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE teams_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: teams_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE teams_id_seq OWNED BY teams.id;
+
+
+--
+-- Name: tournaments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tournaments (
+    id integer NOT NULL,
+    game_id integer,
+    server_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: tournaments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tournaments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tournaments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tournaments_id_seq OWNED BY tournaments.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -177,10 +306,47 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
+-- Name: users_teams; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE users_teams (
+    id integer NOT NULL,
+    user_id integer,
+    team_id integer
+);
+
+
+--
+-- Name: users_teams_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE users_teams_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: users_teams_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE users_teams_id_seq OWNED BY users_teams.id;
+
+
+--
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY authentications ALTER COLUMN id SET DEFAULT nextval('authentications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
 
 
 --
@@ -194,7 +360,35 @@ ALTER TABLE ONLY rails_admin_histories ALTER COLUMN id SET DEFAULT nextval('rail
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY servers ALTER COLUMN id SET DEFAULT nextval('servers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY teams ALTER COLUMN id SET DEFAULT nextval('teams_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tournaments ALTER COLUMN id SET DEFAULT nextval('tournaments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users_teams ALTER COLUMN id SET DEFAULT nextval('users_teams_id_seq'::regclass);
 
 
 --
@@ -206,6 +400,14 @@ ALTER TABLE ONLY authentications
 
 
 --
+-- Name: games_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY games
+    ADD CONSTRAINT games_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: rails_admin_histories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -214,11 +416,43 @@ ALTER TABLE ONLY rails_admin_histories
 
 
 --
+-- Name: servers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY servers
+    ADD CONSTRAINT servers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: teams_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY teams
+    ADD CONSTRAINT teams_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tournaments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tournaments
+    ADD CONSTRAINT tournaments_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_teams_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY users_teams
+    ADD CONSTRAINT users_teams_pkey PRIMARY KEY (id);
 
 
 --
@@ -287,4 +521,14 @@ INSERT INTO schema_migrations (version) VALUES ('20131021224642');
 INSERT INTO schema_migrations (version) VALUES ('20140204233100');
 
 INSERT INTO schema_migrations (version) VALUES ('20140204233952');
+
+INSERT INTO schema_migrations (version) VALUES ('20150512023657');
+
+INSERT INTO schema_migrations (version) VALUES ('20150512132704');
+
+INSERT INTO schema_migrations (version) VALUES ('20150512134924');
+
+INSERT INTO schema_migrations (version) VALUES ('20150512134931');
+
+INSERT INTO schema_migrations (version) VALUES ('20150512134950');
 

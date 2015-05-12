@@ -44,5 +44,8 @@ Rails.application.routes.draw do
 
   get 'robots.:format' => 'robots#index'
 
+
+  get '/t' => 'teams#home' , as: 'team_home'
+
   root 'pages#home'
 end

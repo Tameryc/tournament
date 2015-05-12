@@ -7,7 +7,7 @@
 		%td Full Name
 		%td Email
 	
-	- @users.each do |user|
+	- @tournament.each do |t|
 		%tr
-			%td= "#{user.first_name} #{user.last_name}"
+			%td= "#{t.first_name} #{user.last_name}"
 			%td= user.email

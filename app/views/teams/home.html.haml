@@ -1,0 +1,36 @@
+.row
+	.col-md-4
+		%legend My Teams
+
+		%table.table.table-striped
+			%tr
+				%td #
+				%td Flag
+				%td Name
+			%tr
+				%td 1
+				%td image
+				%td Get Lost!
+	
+
+	.col-md-8
+		%legend Team members
+
+		%table.table.table-striped
+			%tr
+				%td{:style => 'width:10%'} #
+				%td{:style => 'width:30%'} Name
+				%td{:style => 'width:30%'} Role
+				%td{:style => 'width:30%'} Action
+			%tr
+				%td 1
+				%td Mete Kabak
+				%td Mid
+				%td
+					%button.btn.btn-xs.btn-primary
+						%i.glyphicon.glyphicon-edit
+						Edit
+
+					%button.btn.btn-xs.btn-danger
+						%i.glyphicon.glyphicon-remove
+						Delete
